@@ -1,0 +1,4 @@
+#folder(s) / file(s) to ignore
+node_modules/
+
+.env
