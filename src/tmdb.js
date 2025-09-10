@@ -1,17 +1,25 @@
+//What I want to happen here:
+//Grab the value from the input field and search for the movie in TMDb, where all functionality happens after clicking search
+//include errs for invalid movie searches
+//look into similar feature on TMDb
+
 const request = require("request"); //load it into module
 
 function similarMovies(movieName, callback) {
     const apiKey = process.env.TMDB_API; //access API key from env file, NO HARD CODING API KEY!
 
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`;
-    //can see where no hard coding of API key is present in url, its stored in a variable instead!
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`; 
+    //no hard coding of API key present in url, its stored in a variable instead! also couldn't concat like in the weatherapp project
 
     request({ url: url, json: true }, (error, res, body) => { //sending GET request
-        if (error) return callback(error); //throw an error if there are any complications
+        if (error) {
+            return callback(error); //throw an error if there are any complications
+        }
 
         const movie = body.results && body.results[0];
-        if (!movie) return callback(new Error("Movie not found :(")); 
-        //if the movie doesn't exist, then throw a new error with custom string
+        if (!movie) { 
+            return callback(new Error("Movie not found :(")); //if the movie doesn't exist, throw new error with custom string
+        } 
         
         //to identify similar movies, find the unique movie id of the movie similarities should be based on
         const movieId = movie.id; //every movie has a unique id, get that id
