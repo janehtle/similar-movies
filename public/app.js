@@ -1,6 +1,6 @@
 // adding functionality to search button to do the following:
 // Get the value (movie name) from search bar (input)
-// Send a GET request to the server 
+// Send a request to the server 
 // Display movies under section with id = movieList
 
 
