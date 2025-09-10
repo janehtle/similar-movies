@@ -3,22 +3,18 @@
 //include errs for invalid movie searches
 //look into similar feature on TMDb
 
-const request = require("postman-request"); //load it into module, it has to be postman-request not request, I don't remember this??
+const request = require("postman-request"); //load it into module, it has to be postman-request NOT request. Initially mixed it up
 
-function similarMovies(movieName, callback) {
+const similarMovies = (movieName, callback) => {
     const apiKey = process.env.TMDB_API; //access API key from env file, NO HARD CODING API KEY!
 
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`; 
     //url for movie feature om tmdb site
     //no hard coding of API key present in url, its stored in a variable instead! also couldn't concat like in the weatherapp project
-    
-    console.log("Searching for movie:", movieName);           // confirms input
-    console.log("Search URL:", url);                          // confirms the TMDb URL
-
+    // console.log("Searching for movie:", movieName); //confirm input in terminal
 
     request({ url: url, json: true }, (error, res, body) => { //sending GET request
-        
-        console.log("Search response body:", body);               // shows the full API response
+        // console.log("Search results:", body); //display Response in terminal
 
         if (error) {
             return callback(error); //throw an error if there are any complications
@@ -39,7 +35,6 @@ function similarMovies(movieName, callback) {
         });
     });
 }
-
 
 module.exports = {similarMovies};
 
