@@ -3,6 +3,8 @@ First Guided Inquiry during my Road to Hire Apprenticeship where the project and
 
 This project is also the first project where I explored working with back-end for web development.
 
+Live Demo [here](https://similar-movies-8ebf.onrender.com/)
+
 # API Used
 The Movie Database (TMDb) API
 
